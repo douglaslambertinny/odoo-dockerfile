@@ -11,6 +11,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      VERSION: $(date +%s)
 
     steps:
     - uses: actions/checkout@v3
@@ -21,7 +23,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Odoo 16
-      run: docker build . --file Dockerfile --tag lambertinny/odoo-16:$(date +%s)
+      run: docker build . --file Dockerfile --tag lambertinny/odoo-16:$VERSION
       
     - name: Docker Push
-      run: docker push lambertinny/odoo-16
+      run: docker push lambertinny/odoo-16:$VERSION
