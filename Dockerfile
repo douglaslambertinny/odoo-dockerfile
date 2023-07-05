@@ -24,20 +24,6 @@ RUN set -x; \
 
 # Install system dependencies.
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
-
-# Install system dependencies.
-# RUN set -x; \
-#     apt-get update && apt-get install --no-install-recommends -y \
-#     build-essential \
-#     python3-dev \
-#     pkg-config \
-#     libxml2-dev \
-#     libxmlsec1-dev \
-#     libxmlsec1-openssl \
-#     swig \
-#     && rm -rf /var/lib/apt/lists/*
-
-
 RUN set -x; apt-get update && \
     apt-get install --no-install-recommends -y \
     ca-certificates \
@@ -68,8 +54,6 @@ RUN set -x; apt-get update && \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
-# Install rtlcss (on Debian buster)
-# RUN npm install -g rtlcss
 
 # Install application dependencies.
 COPY requirements.txt /
