@@ -56,9 +56,10 @@ RUN set -x; apt-get update && \
 
 
 # Install application dependencies.
-COPY requirements.txt /
-RUN set -x; \
-    pip3 install --no-cache-dir -r requirements.txt
+# Only when using a requirements.txt file of third party modules.
+# COPY requirements.txt /
+# RUN set -x; \
+#     pip3 install --no-cache-dir -r requirements.txt
 
 # Back to default user.
 USER odoo
