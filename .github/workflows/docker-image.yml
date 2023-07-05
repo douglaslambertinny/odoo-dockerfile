@@ -21,7 +21,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Odoo 16
-      run: docker build . --file Dockerfile --tag lambertinny/odoo-16:$(date +%s)
+      run: docker build . --file Dockerfile --tag lambertinny/odoo-16:$GITHUB_RUN_NUMBER
       
     - name: Docker Push
-      run: docker push lambertinny/odoo-16:latest
+      run: docker push lambertinny/odoo-16:$GITHUB_RUN_NUMBER
