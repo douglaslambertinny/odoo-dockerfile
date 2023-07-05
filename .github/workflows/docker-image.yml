@@ -18,10 +18,11 @@ jobs:
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        VERSION: $(date +%s)
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Odoo 16
-      run: docker build . --file Dockerfile --tag lambertinny/odoo-16:$(date +%s)
+      run: docker build . --file Dockerfile --tag lambertinny/odoo-16:$VERSION
       
     - name: Docker Push
-      run: docker push lambertinny/odoo-16
+      run: docker push lambertinny/odoo-16:$VERSION
